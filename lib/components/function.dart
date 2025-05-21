@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/controller/cart_controller.dart';
+import 'package:e_commerce_app/controller/usersearch_controller.dart';
 import 'package:e_commerce_app/views/list_product_class.dart';
 import 'package:e_commerce_app/views/products_details.dart';
 import 'package:e_commerce_app/views/profile.dart';
@@ -44,19 +45,27 @@ Widget productCard(
       );
     },
     child: Padding(
-      padding: EdgeInsets.only(right: 15.0, left: 15.0),
+      padding: EdgeInsets.only(right: 8.0, left: 8.0),
       child: Container(
-        width: 140,
+        width: 175,
         height: 230,
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 5,
+              blurRadius: 15,
+              offset: Offset(0, 10),
+            ),
+          ],
           border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(23),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(imagePath, height: 80),
+            Center(child: Image.asset(imagePath, height: 80)),
             SizedBox(height: 8),
             Text(
               nameProduct,
@@ -106,7 +115,7 @@ CarouselSlider imageSliderHome() {
       autoPlay: true,
       enlargeCenterPage: true,
       viewportFraction: 0.9,
-      autoPlayInterval: Duration(seconds: 3),
+      autoPlayInterval: Duration(seconds: 2),
     ),
     items:
         bannerImages.map((imagePath) {
@@ -168,7 +177,7 @@ GestureDetector exploreCard({
         border: Border.all(color: color2),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
             child: Image.asset(
@@ -326,5 +335,54 @@ Row bottomSheetRow({required String text1, required String text2}) {
         ],
       ),
     ],
+  );
+}
+
+Container productDetailsImage(ProductModel product) {
+  return Container(
+    height: 300,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(25),
+        bottomRight: Radius.circular(25),
+      ),
+      color: Color.fromARGB(47, 219, 219, 219),
+    ),
+    child: Image.asset(
+      product.image,
+      height: 500,
+      width: 500,
+      fit: BoxFit.contain,
+    ),
+  );
+}
+
+final UsersearchController searchCtrl = Get.put(UsersearchController());
+
+SizedBox serchPageSearchBar() {
+  return SizedBox(
+    height: 55,
+    width: 300,
+    child: TextField(
+      onChanged: (value) => searchCtrl.search(value),
+      cursorColor: Colors.grey,
+      style: TextStyle(fontWeight: FontWeight.bold),
+      decoration: InputDecoration(
+        hintText: 'Search Type',
+        hintStyle: TextStyle(color: Colors.grey),
+        prefixIcon: Icon(Icons.search),
+        filled: true, // Fill karne ke liye true karna zaroori hai
+        fillColor: Color.fromRGBO(242, 243, 242, 1),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+      ),
+    ),
   );
 }

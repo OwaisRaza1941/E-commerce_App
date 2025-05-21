@@ -47,7 +47,7 @@ class SelectLocationPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 20.0),
                 child: Container(
-                  width: 320,
+                  width: 335,
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Banasree',
@@ -74,7 +74,7 @@ class SelectLocationPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 20.0),
                 child: Container(
-                  width: 320,
+                  width: 335,
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Types of your area',

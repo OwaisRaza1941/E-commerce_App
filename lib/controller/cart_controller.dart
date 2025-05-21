@@ -18,19 +18,4 @@ class CartController extends GetxController {
     return cartAdd.contains(product);
   }
 
-  int countIncrease = 1;
-
-  addIncrease() {
-    countIncrease++;
-    update();
-  }
-
-  subtractIncrease() {
-    if (countIncrease < 1) {
-      countIncrease + 1;
-    } else {
-      countIncrease--;
-    }
-    update();
-  }
 }

@@ -90,10 +90,7 @@ class CartPage extends StatelessWidget {
                                           Row(
                                             children: [
                                               IconButton(
-                                                onPressed: () {
-                                                  cartController
-                                                      .subtractIncrease();
-                                                },
+                                                onPressed: () {},
                                                 style: IconButton.styleFrom(
                                                   side: BorderSide(
                                                     color: Colors.grey,
@@ -111,15 +108,10 @@ class CartPage extends StatelessWidget {
                                                 ),
                                               ),
                                               SizedBox(width: 8),
-                                              Text(
-                                                cartController.countIncrease
-                                                    .toString(),
-                                              ),
+                                              Text(''),
                                               SizedBox(width: 8),
                                               IconButton(
-                                                onPressed: () {
-                                                  cartController.addIncrease();
-                                                },
+                                                onPressed: () {},
                                                 style: IconButton.styleFrom(
                                                   side: BorderSide(
                                                     color: color2,
@@ -172,4 +164,3 @@ class CartPage extends StatelessWidget {
     );
   }
 }
-

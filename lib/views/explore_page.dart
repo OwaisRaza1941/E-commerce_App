@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/components/function.dart';
 import 'package:e_commerce_app/login_screens/color.dart';
 import 'package:e_commerce_app/views/bevegares_page.dart';
+import 'package:e_commerce_app/views/search_page.dart';
 import 'package:flutter/material.dart';
 
 class ExplorePage extends StatelessWidget {
@@ -22,6 +23,12 @@ class ExplorePage extends StatelessWidget {
               ),
               SizedBox(height: 25),
               TextField(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchPage()),
+                  );
+                },
                 decoration: InputDecoration(
                   hintText: 'Search Store',
                   hintStyle: TextStyle(color: Colors.grey),
@@ -37,7 +44,6 @@ class ExplorePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              // Color.fromRGBO(83, 177, 117, 0.1),
               Row(
                 children: [
                   exploreCard(

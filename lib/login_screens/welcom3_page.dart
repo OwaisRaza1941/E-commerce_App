@@ -157,11 +157,12 @@ class Welcom3Page extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                 ),
-                child: Text(''),
+                child: Text('Go to Sign In Page'),
               ),
             ),
           ],

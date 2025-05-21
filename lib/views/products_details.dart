@@ -1,5 +1,6 @@
-import 'package:e_commerce_app/controller/details_products_controller.dart';
+import 'package:e_commerce_app/components/function.dart';
 import 'package:e_commerce_app/login_screens/color.dart';
+import 'package:e_commerce_app/views/home_products.dart';
 import 'package:e_commerce_app/views/list_product_class.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,6 @@ class ProductsDetails extends StatelessWidget {
 
   ProductsDetails({required this.product});
 
-  final DetailsProductsController productsController = Get.put(
-    DetailsProductsController(),
-  );
-
   final CartController cartController = Get.put(CartController());
 
   final FavoriteController favController = Get.put(FavoriteController());
@@ -24,40 +21,34 @@ class ProductsDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: GetBuilder<DetailsProductsController>(
+      body: GetBuilder<FavoriteController>(
         builder: (controller) {
           return SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(top: 50.0),
+              padding: EdgeInsets.only(top: 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 20.0, left: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            favController.isFavourite(product)
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color:
-                                favController.isFavourite(product)
-                                    ? Colors.red
-                                    : Colors.grey,
-                          ),
-                          onPressed: () {
-                            favController.toggleFavourite(product);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
                   SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0, left: 15.0),
-                    child: productDetailsImage(),
+                  Stack(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context, HomeProductPage());
+                            },
+                            icon: Icon(Icons.arrow_back_ios_new),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.file_download_outlined),
+                          ),
+                        ],
+                      ),
+                      productDetailsImage(product),
+                    ],
                   ),
                   SizedBox(height: 10),
                   Padding(
@@ -73,18 +64,16 @@ class ProductsDetails extends StatelessWidget {
                           ),
                         ),
                         IconButton(
+                          onPressed: () {
+                            favController.toggleFavorite(product);
+                          },
                           icon: Icon(
-                            productsController.cart.contains(products)
+                            product.isFavorite
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color:
-                                productsController.cart.contains(products)
-                                    ? Colors.red
-                                    : Colors.grey,
+                                product.isFavorite ? Colors.red : Colors.grey,
                           ),
-                          onPressed: () {
-                            productsController.addRemoveFromCart(products);
-                          },
                         ),
                       ],
                     ),
@@ -103,7 +92,7 @@ class ProductsDetails extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {
-                            productsController.subtractIncrease();
+                            cartController.addRemovetoCart(product);
                           },
                           icon: Icon(Icons.remove),
                         ),
@@ -113,17 +102,13 @@ class ProductsDetails extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.grey),
                           ),
-                          child: Center(
-                            child: Text(
-                              productsController.countIncrease.toString(),
-                            ),
-                          ),
+                          child: Center(child: Text('1')),
                         ),
+
                         IconButton(
-                          onPressed: () {
-                            productsController.addIncrease();
-                          },
+                          onPressed: () {},
                           icon: Icon(Icons.add, color: color2),
                         ),
                         SizedBox(width: 144),
@@ -160,7 +145,7 @@ class ProductsDetails extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 15.0, left: 15.0),
                     child: Text(
-                      product.description!,
+                      product.description.toString(),
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -189,7 +174,9 @@ class ProductsDetails extends StatelessWidget {
                                 color: const Color.fromARGB(92, 192, 192, 192),
                               ),
                               child: Center(
-                                child: Text(product.productNutritons!),
+                                child: Text(
+                                  product.productNutritons.toString(),
+                                ),
                               ),
                             ),
                             SizedBox(width: 8),
@@ -230,7 +217,7 @@ class ProductsDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Center(
-                    child: Container(
+                    child: SizedBox(
                       width: 330,
                       height: 50,
                       child: ElevatedButton(
@@ -257,24 +244,6 @@ class ProductsDetails extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Container productDetailsImage() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Color.fromARGB(47, 219, 219, 219),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Image.asset(
-          product.image,
-          fit: BoxFit.contain,
-          width: 950,
-          height: 200,
-        ),
       ),
     );
   }
