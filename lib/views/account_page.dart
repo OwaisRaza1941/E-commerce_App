@@ -48,11 +48,11 @@ class AccountPage extends StatelessWidget {
                 },
               ),
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 60,
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {}, 
                 icon: Icon(Icons.logout, color: color2),
                 label: Text("Log Out"),
                 style: ElevatedButton.styleFrom(

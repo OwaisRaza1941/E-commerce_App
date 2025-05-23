@@ -23,15 +23,21 @@ class FilterController extends GetxController {
       selectedBrands.remove(brand);
     } else {
       selectedBrands.add(brand);
-    }
+    }    
     print(brand);
   }
 
   void applyFilter() {
-    filteredProducts.value = allProducts.where((product) {
-      final matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(product.category);
-      final matchesBrand = selectedBrands.isEmpty || selectedBrands.contains(product.brand);
-      return matchesCategory && matchesBrand;
-    }).toList();
+    filteredProducts.value =
+        allProducts.where((product) {
+          final matchesCategory =
+              selectedCategories.isEmpty ||
+              selectedCategories.contains(product.category);
+          final matchesBrand =
+              selectedBrands.isEmpty || selectedBrands.contains(product.brand);
+          return matchesCategory && matchesBrand;
+        }).toList();
+
+    print("Filtered Products: ${filteredProducts.length}");
   }
 }

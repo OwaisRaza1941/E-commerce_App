@@ -363,7 +363,7 @@ final UsersearchController searchCtrl = Get.put(UsersearchController());
 SizedBox serchPageSearchBar() {
   return SizedBox(
     height: 55,
-    width: 300,
+    width: 280,
     child: TextField(
       onChanged: (value) => searchCtrl.search(value),
       cursorColor: Colors.grey,

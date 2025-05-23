@@ -11,7 +11,7 @@ class UsersearchController extends GetxController {
     super.onInit();
     allProducts.addAll([
       ProductModel(
-        name: 'Red Aplpple',
+        name: 'Red Apple',
         image: 'assets/home_product2.png',
         price: '\$4.99',
         isPopular: true,
@@ -42,6 +42,13 @@ class UsersearchController extends GetxController {
       ProductModel(
         name: 'Coca Cala Can',
         image: 'assets/bevegares_product5.png',
+        price: '\$4.99',
+        piceis: '325ml, Price',
+        isPopular: true,
+      ),
+      ProductModel(
+        name: 'Egg Pasta',
+        image: 'assets/egg_pasta.png',
         price: '\$4.99',
         piceis: '325ml, Price',
         isPopular: true,

@@ -12,8 +12,9 @@ class ExplorePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(right: 20.0, left: 15.0, top: 50.0),
+          padding: EdgeInsets.only(top: 50.0, right: 10.0, left: 10.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: Text(
@@ -45,6 +46,7 @@ class ExplorePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   exploreCard(
                     imagePath: 'assets/explore_product1.png',
@@ -65,6 +67,7 @@ class ExplorePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   exploreCard(
                     imagePath: 'assets/explore_product3.png',
@@ -85,6 +88,7 @@ class ExplorePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   exploreCard(
                     imagePath: 'assets/explore_product6.png',

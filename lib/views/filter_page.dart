@@ -1,5 +1,8 @@
 import 'package:e_commerce_app/controller/filter_controller.dart';
+import 'package:e_commerce_app/controller/usersearch_controller.dart';
+import 'package:e_commerce_app/views/explore_page.dart';
 import 'package:e_commerce_app/views/list_product_class.dart';
+import 'package:e_commerce_app/views/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,9 +35,15 @@ class FilterPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 70.0),
             child: Row(
               children: [
-                IconButton(onPressed: () {
-                  Navigator.pop(context);
-                }, icon: Icon(Icons.close)),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ExplorePage()),
+                    );
+                  },
+                  icon: Icon(Icons.close),
+                ),
                 SizedBox(width: 110),
                 Text(
                   'Filters',
@@ -120,9 +129,22 @@ class FilterPage extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             filterController.applyFilter();
-                            Get.back();
+
+                            // Sync filtered result to search controller
+                            final searchCtrl = Get.find<UsersearchController>();
+                            searchCtrl.filteredProducts.value =
+                                filterController.filteredProducts;
+
+                            searchCtrl.searchText.value =
+                                "filter"; // Just to trigger filtered list in UI
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SearchPage(),
+                              ),
+                            );
                           },
-                          child: const Text("Apply Filter"),
+                          child: Text("Apply Filter"),
                         ),
                       ),
                     ],

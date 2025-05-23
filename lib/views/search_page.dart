@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/components/function.dart';
+import 'package:e_commerce_app/controller/filter_controller.dart';
 import 'package:e_commerce_app/controller/usersearch_controller.dart';
 import 'package:e_commerce_app/views/filter_page.dart';
+import 'package:e_commerce_app/views/list_product_class.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,15 +10,17 @@ class SearchPage extends StatelessWidget {
   SearchPage({super.key});
 
   final UsersearchController searchCtrl = Get.put(UsersearchController());
+  final FilterController filterCtrl = Get.put(FilterController(products));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 50.0, right: 10.0, left: 10.0),
+        padding: EdgeInsets.only(top: 50.0),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(child: serchPageSearchBar()),
                 IconButton(
@@ -26,18 +30,24 @@ class SearchPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => FilterPage()),
                     );
                   },
-                  icon: Icon(Icons.tune, size: 25),
+                  icon: Icon(Icons.tune),
                 ),
               ],
             ),
             SizedBox(height: 20),
             Obx(() {
               final query = searchCtrl.searchText.value;
-              final results = searchCtrl.filteredProducts;
-              final showList =
-                  query.isEmpty ? searchCtrl.popularProducts : results;
 
-              if (query.isNotEmpty && results.isEmpty) {
+              // Agar filter laga hai, to filtered products dikhayein
+              final filterProducts = filterCtrl.filteredProducts;
+              final showList =
+                  filterProducts.isNotEmpty
+                      ? filterProducts
+                      : (query.isEmpty
+                          ? searchCtrl.popularProducts
+                          : searchCtrl.filteredProducts);
+
+              if (query.isNotEmpty && showList.isEmpty) {
                 return Center(child: Text("No product found"));
               }
               return Expanded(

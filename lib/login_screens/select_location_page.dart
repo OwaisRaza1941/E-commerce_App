@@ -45,9 +45,9 @@ class SelectLocationPage extends StatelessWidget {
                 child: Text('Your Zone', style: TextStyle(color: Colors.grey)),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Container(
-                  width: 335,
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: SizedBox(
+                  width: double.infinity,
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Banasree',
@@ -72,9 +72,9 @@ class SelectLocationPage extends StatelessWidget {
                 child: Text('Your Area', style: TextStyle(color: Colors.grey)),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Container(
-                  width: 335,
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: SizedBox(
+                  width: double.infinity,
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Types of your area',
@@ -94,8 +94,7 @@ class SelectLocationPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 60),
-              Padding(
-                padding: EdgeInsets.only(left: 40, right: 30.0),
+              Center(
                 child: SizedBox(
                   width: 300,
                   height: 50,
