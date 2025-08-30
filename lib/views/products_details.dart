@@ -89,34 +89,45 @@ class ProductsDetails extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 15.0, left: 15.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            cartController.addRemovetoCart(product);
-                          },
-                          icon: Icon(Icons.remove),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                cartController.subtractPrice(product);
+                              },
+                              icon: Icon(Icons.remove),
+                            ),
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(color: Colors.grey),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  cartController.quantity.value.toString(),
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                cartController.additionPrice(product);
+                              },
+                              icon: Icon(Icons.add, color: color2),
+                            ),
+                          ],
                         ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: Center(child: Text('1')),
-                        ),
-
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.add, color: color2),
-                        ),
-                        SizedBox(width: 144),
-                        Text(
-                          product.price,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        Obx(
+                          () => Text(
+                            '\$${(product.price * cartController.quantity.value).toStringAsFixed(2)}',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],

@@ -65,7 +65,7 @@ class SearchPage extends StatelessWidget {
                       context,
                       product,
                       nameProduct: product.name,
-                      price: product.price,
+                      price: product.price.toString(),
                       piceis: product.piceis,
                       imagePath: product.image,
                     );

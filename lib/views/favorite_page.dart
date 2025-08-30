@@ -51,7 +51,7 @@ class FavouritePage extends StatelessWidget {
                                 fit: BoxFit.contain,
                               ),
                               title: Text(product.name),
-                              subtitle: Text(product.price),
+                              subtitle: Text(product.price.toString()),
                               trailing: IconButton(
                                 icon: Icon(Icons.favorite, color: Colors.red),
                                 onPressed: () {

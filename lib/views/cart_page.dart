@@ -90,7 +90,11 @@ class CartPage extends StatelessWidget {
                                           Row(
                                             children: [
                                               IconButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cartController.subtractPrice(
+                                                    cartItem,
+                                                  );
+                                                },
                                                 style: IconButton.styleFrom(
                                                   side: BorderSide(
                                                     color: Colors.grey,
@@ -108,10 +112,17 @@ class CartPage extends StatelessWidget {
                                                 ),
                                               ),
                                               SizedBox(width: 8),
-                                              Text(''),
+                                              Text(
+                                                cartController.quantity.value
+                                                    .toString(),
+                                              ),
                                               SizedBox(width: 8),
                                               IconButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cartController.additionPrice(
+                                                    cartItem,
+                                                  );
+                                                },
                                                 style: IconButton.styleFrom(
                                                   side: BorderSide(
                                                     color: color2,
@@ -127,11 +138,13 @@ class CartPage extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Text(
-                                            cartItem.price,
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
+                                          Obx(
+                                            () => Text(
+                                              '\$${(cartItem.price * cartController.quantity.value).toStringAsFixed(2)}',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -148,6 +161,7 @@ class CartPage extends StatelessWidget {
                       );
                     },
                   ),
+
                   SizedBox(height: 10),
                   SizedBox(
                     width: 335,

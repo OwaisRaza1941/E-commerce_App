@@ -1,7 +1,7 @@
 class ProductModel {
   final String name;
   final String image;
-  final String price;
+  final double price;
   final String? description;
   final String? productNutritons;
   final String piceis;
@@ -28,7 +28,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Organic Banana',
     image: 'assets/product_details1.png',
-    price: '\$4.99',
+    price: 4.99,
     description: 'They are a good source of potassium...',
     productNutritons: '358 mg',
     piceis: '7pcs, Priceg',
@@ -39,7 +39,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Natural Red Apple',
     image: 'assets/product_details2.png',
-    price: '\$4.99',
+    price: 4.99,
+
     description: 'Apple is a sweet and delicious fruit...',
     piceis: '1kg, Priceg',
     productNutritons: '107 mg',
@@ -50,7 +51,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Bell Pepper Red',
     image: 'assets/home_product3.png',
-    price: '\$4.99',
+    price: 4.99,
+
     description: 'Red bell peppers are a vibrant...',
     piceis: '1kg, Priceg',
     productNutritons: 'Vitm:A: 31%',
@@ -61,7 +63,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Ginger',
     image: 'assets/home_product4.png',
-    price: '\$4.99',
+    price: 4.99,
+
     description: 'Ginger is a rhizome...',
     piceis: '250gm, Priceg',
     productNutritons: '43 mg',
@@ -72,7 +75,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Beef Bone',
     image: 'assets/home_product5.png',
-    price: '\$4.99',
+    price: 4.99,
+
     description: 'Beef bones offer a wealth of nutrients...',
     piceis: '1kg, Priceg',
     productNutritons: '0.5–2 g',
@@ -82,7 +86,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Chicken Brioller',
     image: 'assets/home_product6.png',
-    price: '\$4.99',
+    price: 4.99,
+
     description: 'Chicken delivers vital nutrients...',
     piceis: '1kg, Priceg',
     productNutritons: '24 mcg',
@@ -93,7 +98,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Diet Cake',
     image: 'assets/bevegares_product1.png',
-    price: '\$1.99',
+    price: 1.99,
     piceis: '355ml, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -103,7 +108,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Sprite Can',
     image: 'assets/bevegares_product2.png',
-    price: '\$1.50',
+    price: 1.50,
     piceis: '325ml, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -114,7 +119,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Apple & Grape',
     image: 'assets/bevegares_product3.png',
-    price: '\$15.99',
+    price: 15.99,
     piceis: '2L, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -124,7 +129,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Orenge Juice',
     image: 'assets/bevegares_product4.png',
-    price: '\$1.99',
+    price: 1.99,
     piceis: '2L, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -135,7 +140,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Coca Cala Can',
     image: 'assets/bevegares_product5.png',
-    price: '\$4.99',
+    price: 4.99,
     piceis: '325ml, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -145,7 +150,8 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Pepsi Can',
     image: 'assets/bevegares_product6.png',
-    price: '\$4.99',
+    price: 4.99,
+
     piceis: '330ml, Price',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -155,7 +161,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Egg Chicken Red',
     image: 'assets/egg_chickenred.png',
-    price: '\$1.99',
+    price: 1.99,
     piceis: '4pcs, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -165,7 +171,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Egg Chicken White',
     image: 'assets/egg_chickenwhite.png',
-    price: '\$1.50',
+    price: 1.50,
     piceis: '180g, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -175,7 +181,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Egg Pasta',
     image: 'assets/egg_pasta.png',
-    price: '\$15.99',
+    price: 15.99,
     piceis: '30gm, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -185,7 +191,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Egg Noodles',
     image: 'assets/egg_noodles.png',
-    price: '\$15.99',
+    price: 15.99,
     piceis: '2L, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -195,7 +201,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Mayonnais',
     image: 'assets/mayonnais_eggless.png',
-    price: '\$15.99',
+    price: 15.99,
     piceis: '1kg, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
@@ -205,7 +211,7 @@ final List<ProductModel> products = [
   ProductModel(
     name: 'Egg Noodles',
     image: 'assets/egg_nodels.png',
-    price: '\$15.99',
+    price: 15.99,
     piceis: '2L, Priceg',
     productNutritons: 'Apple',
     description: 'Apple is a sweet and delicious fruit...',
